@@ -1,6 +1,6 @@
 # README
 
-## Rails6 app to manage vocabulary and artciles.
+## Rails6 app to manage vocabulary and articless.
 ## Reason:
   - Using corona season free time
 
