@@ -1,0 +1,34 @@
+<%= form_for(@vocabulary, url: update_vocabulary_path) do |f| %>
+  <div class="container center">
+    <h3>New Vocabulary</h3>
+    <div class="row">
+      <div class="row">
+        <div class="col s12 m4 l4"></div>
+        <div class="input-field col s12 m4 l4">
+          <i class="material-icons prefix">account_circle</i>
+          <%= f.text_field :word, class: "validate", id: "icon_prefix"%>
+          <label for="icon_prefix">New Word</label>
+        </div>
+        <div class="col s12 m4 l4"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">feedback</i>
+            <%= f.text_field :meaning, id: "first_name", class: "validate" %>
+            <label for="first_name">Meaning</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">hearing</i>
+            <%= f.text_field :example, id: "last_name", class: "validate" %>
+            <label for="last_name">Example</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <%= f.submit "Update", class: "waves-effect waves-light btn-large" %>
+  </div>
+<% end %>

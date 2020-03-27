@@ -1,0 +1,16 @@
+<%= form_tag url_for(:controller => 'vocabularies', :action => 'search_by_word'), :method => 'get' do %>
+  <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field #9e9e9e grey">
+          <%= text_field_tag :word, params[:word], id:"search", type:"search" %>
+          <label class="label-icon " for="search">
+            <i class="material-icons">search</i>
+          </label>
+          <%= submit_tag '' do %>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </nav>
+<% end %>

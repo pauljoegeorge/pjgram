@@ -1,0 +1,18 @@
+<% flash.each do |type, msg| %>
+  <div class="row #1de9b6 teal accent-3" id="alertDiv">
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8 ">
+      <p><%= msg %></p>
+    </div>
+    <div class="col s12 m4 l2 right-align">
+      <i class="material-icons" onclick="closeAlertDiv()">close</i>
+    </div>
+  </div>
+<% end %>
+
+<script>
+    function closeAlertDiv() {
+        var x = document.getElementById("alertDiv");
+        x.style.display = "none";
+    }
+</script>

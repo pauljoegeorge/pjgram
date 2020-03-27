@@ -1,0 +1,19 @@
+<ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">book</i>
+      <% if @vocabulary.present? %>
+        <span class="title"><%=  @vocabulary.word %></span>
+        <i class="material-icons circle green">book</i>
+        <p> &ensp;&ensp; <%= @vocabulary.meaning %>
+        </p>
+        <blockquote style="font-style: italic">
+          <% if @vocabulary.example.present? %>
+            <%= @vocabulary.example %>
+          <% end %>
+        </blockquote>
+        <%= link_to delete_vocabulary_path(@vocabulary.id), method: :delete,  class: "secondary-content col s9" do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      <% end %>
+    </li>
+</ul>

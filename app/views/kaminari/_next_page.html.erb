@@ -1,0 +1,10 @@
+<!--<li>-->
+  <%#= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, rel: 'next', remote: remote %>
+<!--</li>-->
+
+<% unless  current_page.last? %>
+    <li class="waves-effect"><%= link_to url, rel: 'next', remote: remote do %>
+        <i class="material-icons">chevron_right</i>
+        <% end %>
+        </li>
+<% end %>
