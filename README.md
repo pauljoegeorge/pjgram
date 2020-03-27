@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Rails6 app to manage vocabulary and artciles.
+## Reason:
+  - Using corona season free time
 
-Things you may want to cover:
 
-* Ruby version
+## Setup
+- Watch `config/database.yml`
+- Install dependencies `$ bundle i`
+- start server `$ rails s`
+- Tada !!
+ 
+## Available features:
+- User account ( Register/Login/Logout)
+- Vocabulary Management
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## [WIP]
+- Article management
+- Add friends
+- User profile
+- And more ....
