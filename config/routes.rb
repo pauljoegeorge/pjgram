@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'articles/new'
+  get 'articles/index'
   get 'account/signup'
   get 'account/signin'
   get 'account/signout'
@@ -22,6 +24,13 @@ Rails.application.routes.draw do
     get '/:id'          => 'vocabularies#show',           as: 'show_word'
     get '/edit/:id'     => 'vocabularies#edit',           as: 'edit_vocabulary'
     patch '/:id'        => 'vocabularies#update',         as: 'update_vocabulary'
+  end
+
+  scope :articles do
+    get '/'    => 'articles#index', as: 'articles'
+    get '/new' => 'articles#new',   as: 'new_article'
+    post '/'   => 'articles#create'
+    get '/:id' => 'articles#show',  as: 'article'
   end
 end
 

@@ -1,0 +1,48 @@
+<%= form_with model: @article do |f| %>
+<div class="container">
+  <br>
+  <div class="col s9">
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_field :head, id: 'last_name', class: 'validate' do %>
+<!--        <input id="last_name" type="text" class="validate">-->
+          <label for="last_name">Title</label>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_area :description, placeholder: 'This field supports Markdown', id:"textarea2", class:"materialize-textarea",  maxlength: 1000 do %>
+<!--        <textarea placeholder="This field supports Markdown" id="textarea2" class="materialize-textarea" data-length="1000"></textarea>-->
+          <label for="textarea2">Content</label>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Customizable input  -->
+      <div class="chips chips-initial">
+        <%= f.text_field :tags, class: 'custom-class' %>
+<!--        <input class="custom-class">-->
+      </div>
+    </div>
+    <div class="row">
+      <%= f.submit "Save", class:"waves-effect waves-light btn-large" %>
+    </div>
+  </div>
+</div>
+<% end %>
+<script>
+    $(document).ready(function() {
+      $('input#input_text, textarea#textarea2').characterCounter();
+    });
+    $('.chips').chips();
+    $('.chips-initial').chips({
+        data: [{
+            tag: 'Apple',
+        }, {
+            tag: 'Microsoft',
+        }, {
+            tag: 'Google',
+        }],
+    });
+</script>
