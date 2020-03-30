@@ -27,10 +27,13 @@ Rails.application.routes.draw do
   end
 
   scope :articles do
-    get '/'    => 'articles#index', as: 'articles'
-    get '/new' => 'articles#new',   as: 'new_article'
-    post '/'   => 'articles#create'
-    get '/:id' => 'articles#show',  as: 'article'
+    get '/'             => 'articles#index',              as: 'articles'
+    get '/new'          => 'articles#new',                as: 'new_article'
+    post '/'            => 'articles#create'
+    delete '/:id'       => 'articles#destroy',            as: 'delete_article'
+    get '/:id'          => 'articles#show',               as: 'article'
+    get '/edit/:id'     => 'articles#edit',               as: 'edit_article'
+    patch '/:id'        => 'articles#update',             as: 'update_article'
   end
 end
 
