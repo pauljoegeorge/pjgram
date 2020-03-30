@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_041536) do
+ActiveRecord::Schema.define(version: 2020_03_27_094807) do
+
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.string "head", null: false
+    t.string "tags"
+    t.text "description", null: false
+    t.bigint "user_id"
+    t.index ["head"], name: "index_articles_on_head", unique: true
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -35,5 +44,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_041536) do
     t.index ["word"], name: "index_vocabularies_on_word", unique: true
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "vocabularies", "users"
 end
