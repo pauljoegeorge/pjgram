@@ -11,14 +11,15 @@ class ArticlesController < ApplicationController
 
   def create
     param = permitted_params(params)
-    @article = Article.new param
-    @article.user_id = current_user.id
-    if @article.valid?
-      @article.save
-      redirect_to article_path(@article)
-    else
-      render 'new'
-    end
+    byebug
+    # @article = Article.new param
+    # @article.user_id = current_user.id
+    # if @article.valid?
+    #   @article.save
+    #   redirect_to article_path(@article)
+    # else
+    #   render 'new'
+    # end
   end
 
   def edit
