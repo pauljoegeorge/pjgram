@@ -11,15 +11,15 @@ class ArticlesController < ApplicationController
 
   def create
     param = permitted_params(params)
-    byebug
-    # @article = Article.new param
-    # @article.user_id = current_user.id
-    # if @article.valid?
-    #   @article.save
-    #   redirect_to article_path(@article)
-    # else
-    #   render 'new'
-    # end
+    @article = Article.new param
+    @article.tag_names = tags_as_array(params[:article][:tag_names])
+    @article.user_id = current_user.id
+    if @article.valid?
+      @article.save
+      redirect_to article_path(@article)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -48,6 +48,10 @@ class ArticlesController < ApplicationController
   private
 
   def permitted_params(params)
-    params.require(:article).permit(:head, :description, :tags)
+    params.require(:article).permit(:head, :description)
+  end
+
+  def tags_as_array(tag_names)
+    tag_names.gsub!(/[^0-9A-Za-z:,]/, '').gsub!(/[tag:]/, '').split(',')
   end
 end
