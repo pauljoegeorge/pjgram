@@ -28,10 +28,12 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if @article.update permitted_params(params)
-      flash[:success] = "Updated successfully !!"
-      redirect_to article_path(@article.id)
-    end
+    @article.head = params[:article][:head]
+    @article.description = params[:article][:description]
+    @article.tag_names = tags_as_array(params[:article][:tag_names])
+    @article.save
+    flash[:success] = "Updated successfully !!"
+    redirect_to article_path(@article.id)
   end
 
   def show
