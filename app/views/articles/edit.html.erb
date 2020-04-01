@@ -21,7 +21,8 @@
       <div class="row">
         <!-- Customizable input  -->
         <div class="chips chips-initial">
-          <%= f.text_field :tags, class: 'custom-class' %>
+          <%#= f.text_field :tag_names, class: 'custom-class' %>
+          <input id="tag_names" class="custom-class" name="tag_names">
           <!--        <input class="custom-class">-->
         </div>
       </div>
@@ -44,5 +45,38 @@
         }, {
             tag: 'Google',
         }],
+    });
+
+    $("form").submit(function(event) {
+
+        /* stop form from submitting normally */
+        event.preventDefault();
+
+        /* get values from elements on the page: */
+        var tag_names= JSON.stringify(M.Chips.getInstance($('.chips')).chipsData);
+        var head = $('#last_name').val();
+        var description = $('#textarea2').val();
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+
+        /* Send the data using post and put the results in a div */
+        $.ajax({
+            type: "PATCH",
+            url: '/articles/' + id.toString(),
+            data: {
+                article:
+                    {
+                        tag_names: tag_names,
+                        head: head,
+                        description: description
+                    }
+            },
+            success: function(){
+                // alert('Saved Successfully');
+            },
+            error:function(){
+                // alert('Error');
+            }
+        });
     });
 </script>

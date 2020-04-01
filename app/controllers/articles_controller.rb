@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   def create
     param = permitted_params(params)
     @article = Article.new param
+    @article.tag_names = tags_as_array(params[:article][:tag_names])
     @article.user_id = current_user.id
     if @article.valid?
       @article.save
@@ -27,10 +28,12 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if @article.update permitted_params(params)
-      flash[:success] = "Updated successfully !!"
-      redirect_to article_path(@article.id)
-    end
+    @article.head = params[:article][:head]
+    @article.description = params[:article][:description]
+    @article.tag_names = tags_as_array(params[:article][:tag_names])
+    @article.save
+    flash[:success] = "Updated successfully !!"
+    redirect_to article_path(@article.id)
   end
 
   def show
@@ -47,6 +50,10 @@ class ArticlesController < ApplicationController
   private
 
   def permitted_params(params)
-    params.require(:article).permit(:head, :description, :tags)
+    params.require(:article).permit(:head, :description)
+  end
+
+  def tags_as_array(tag_names)
+    tag_names.gsub!(/[^0-9A-Za-z:,]/, '').gsub!(/[tag:]/, '').split(',')
   end
 end

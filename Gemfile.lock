@@ -95,6 +95,8 @@ GEM
     ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gutentag (2.5.2)
+      activerecord (>= 3.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     image_processing (1.10.3)
@@ -260,6 +262,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.0)
   devise
+  gutentag (~> 2.5)
   jbuilder (~> 2.7)
   jquery-rails
   kaminari

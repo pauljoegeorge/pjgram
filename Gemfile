@@ -67,3 +67,5 @@ gem 'jquery-rails'
 gem 'carrierwave', '~> 2.0'
 # for Markdown
 gem "redcarpet"
+# for tags
+gem 'gutentag', '~> 2.5'
