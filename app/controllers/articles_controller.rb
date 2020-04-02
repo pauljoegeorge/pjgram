@@ -54,6 +54,11 @@ class ArticlesController < ApplicationController
   end
 
   def tags_as_array(tag_names)
-    tag_names.gsub!(/[^0-9A-Za-z:,]/, '').gsub!(/[tag:]/, '').split(',')
+    # tag_names.gsub!(/[^0-9A-Za-z:,]/, '').gsub!(/[tag:]/, '').split(',')
+    formatted_tags_array = tag_names.gsub!(/[^0-9A-Za-z:,]/, '').split(',')
+    formatted_tags_array.each do |tag|
+      tag.slice!("tag:")
+    end
+    return formatted_tags_array
   end
 end

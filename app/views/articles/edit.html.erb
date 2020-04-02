@@ -36,16 +36,15 @@
     $(document).ready(function() {
         $('input#input_text, textarea#textarea2').characterCounter();
     });
+
     $('.chips').chips();
-    $('.chips-initial').chips({
-        data: [{
-            tag: 'Apple',
-        }, {
-            tag: 'Microsoft',
-        }, {
-            tag: 'Google',
-        }],
-    });
+    var elem = $('.chips');
+    var instance = M.Chips.getInstance(elem);
+    <% for i in 1...@article.tag_names.size %>
+      instance.addChip({
+          tag: '<%= @article.tag_names[i] %>',
+      });
+    <% end %>
 
     $("form").submit(function(event) {
 
