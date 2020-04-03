@@ -1,10 +1,32 @@
+<div class="row">
+
+</div>
+<div class="row">
+  <div class="col s1 left-align">
+    <%= link_to articles_path, class: "btn-floating btn-large waves-effect waves-light green" do %>
+      <i class="material-icons">home</i>
+    <% end %>
+  </div>
+  <div class="col s11 right-align">
+    <%= link_to article_path(@article.id), class: "btn-floating btn-large waves-effect waves-light green" do %>
+      <i class="material-icons">assignment</i>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m4 l2"></div>
+  <div class="col s12 m4 l8 center-align">
+    <h1 class="blue-grey-text darken-4"> Edit Article </h1>
+  </div>
+  <div class="col s12 m4 l2"></div>
+</div>
 <%= form_for(@article, url: update_article_path) do |f| %>
   <div class="container">
     <br>
     <div class="col s9">
       <div class="row">
         <div class="input-field col s12">
-          <%= f.text_field :head, id: 'last_name', class: 'validate' do %>
+          <%= f.text_field :head, id: 'last_name', class: 'validate blue-grey-text darken-4', style: "font-size:30px;" do %>
             <!--        <input id="last_name" type="text" class="validate">-->
             <label for="last_name">Title</label>
           <% end %>
@@ -12,7 +34,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <%= f.text_area :description, placeholder: 'This field supports Markdown', id:"textarea2", class:"materialize-textarea",  maxlength: 1000 do %>
+          <%= f.text_area :description, placeholder: 'This field supports Markdown', id:"textarea2", class:"materialize-textarea blue-grey-text darken-4", style: "font-size:22px;",  maxlength: 1000 do %>
             <!--        <textarea placeholder="This field supports Markdown" id="textarea2" class="materialize-textarea" data-length="1000"></textarea>-->
             <label for="textarea2">Content</label>
           <% end %>

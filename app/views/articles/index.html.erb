@@ -1,24 +1,48 @@
+<!--<div class="container left-align">-->
+<div class="row">
+</div>
+<div class="row">
+  <div class="col s12 right-align">
+    <%= link_to new_article_path, class: "btn-floating btn-large waves-effect waves-light green" do %>
+      <i class="material-icons">add</i>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+</div>
+<div class="row">
+  <div class="col s12 m4 l2"></div>
+  <div class="col s12 m4 l8 center-align">
+    <h2 class="blue-grey-text darken-3"> My Articles </h2>
+  </div>
+  <div class="col s12 m4 l2"></div>
+</div>
 <%= check_for_alert %>
 <ul class="collection">
   <% @articles.each  do  |article|%>
     <li class="collection-item avatar">
       <i class="material-icons circle green">book</i>
-      <span class="title"><%=  article.head %></span>
+      <a href="/articles/<%=article.id %>"><span class="title blue-grey-text lighten-4" style="font-size: 25px"><%=  article.head %></span></a>
 <!--      <i class="material-icons circle green">book</i>-->
 <!--      <p> &ensp;&ensp; <%#= vocabulary.meaning %>-->
 <!--      </p>-->
-      <blockquote style="font-style: italic">
-        <% if article.tags.present? %>
-          <%= article.tags %>
+<!--      <blockquote style="font-style: italic">-->
+        <% if article.tag_names.present? %>
+          <div class="card-action">
+            &ensp;&ensp;
+            <% article.tag_names.each do |tag| %>
+              <a href="#" class="purple-text lighten-4">#<%= tag %></a>
+            <% end  %>
+          </div>
         <% end %>
-      </blockquote>
+<!--      </blockquote>-->
       <%= link_to delete_article_path(article.id), method: :delete,  class: "secondary-content col s9" do %>
         <i class="material-icons">delete</i>
       <% end %>
       <p>
-        <%= link_to "Show", article_path(article.id), method: :get %>
-        &nbsp; | &nbsp;
-        <%= link_to "Edit", edit_article_path(article.id), method: :get %>
+        <%#= link_to "Show", article_path(article.id), method: :get, class: "purple-text text-darken-2"%>
+        &nbsp;  &nbsp;
+        <%= link_to "Edit", edit_article_path(article.id), method: :get, class: "blue-text text-darken-2" %>
       </p>
     </li>
   <% end %>
@@ -27,3 +51,4 @@
 <ul class="pagination center">
   <%= paginate @articles %>
 </ul>
+<!--</div>-->
