@@ -6,8 +6,9 @@
 <script>
     $('.parallax').parallax();
 </script>
-<div class="section white">
-  <div class="row container">
+<div class="section orange lighten-5">
+  <div class="row container center-align">
+    <%= image_tag 'profile/dp.png', class: "circle" %>
     <% if @user.name.present? %>
       <h2 class="header center"><%= @user.name %></h2>
     <% else %>
