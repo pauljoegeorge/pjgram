@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/profile', to: 'users#profile', as: 'user_profile'
   get 'articles/new'
   get 'articles/index'
   get 'account/signup'
