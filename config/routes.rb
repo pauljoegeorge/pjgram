@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get '/profile', to: 'users#profile', as: 'user_profile'
   get 'articles/new'
   get 'articles/index'
   get 'account/signup'
@@ -35,6 +34,12 @@ Rails.application.routes.draw do
     get '/:id'          => 'articles#show',               as: 'article'
     get '/edit/:id'     => 'articles#edit',               as: 'edit_article'
     patch '/:id'        => 'articles#update',             as: 'update_article'
+  end
+
+  scope :profile do
+    get '/'       => 'users#profile',         as: 'user_profile'
+    get '/edit'   => 'users#profile_edit',    as: 'user_profile_edit'
+    patch '/updated'  => 'users#profile_update',  as: 'user_profile_update'
   end
 end
 
