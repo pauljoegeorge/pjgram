@@ -11,7 +11,11 @@
     <div class="row">
       <div class="col s12 m4 l2"></div>
       <div class="col s12 m4 l8 center-align">
-        <%= image_tag 'profile/dp.png', class: "circle" %>
+        <% if @user.profile_picture.present? %>
+          <%= image_tag @user.profile_picture.thumb.url, id: "ImageUpload", class: "circle" %>
+        <% else %>
+          <%= image_tag 'profile/dp.png', id: "ImageUpload", class: "circle" %>
+        <% end %>
       </div>
       <div class="col s12 m4 l2 right-align"></div>
     </div>

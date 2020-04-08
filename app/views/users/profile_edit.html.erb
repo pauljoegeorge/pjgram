@@ -15,7 +15,7 @@
         <div class="col s12 m4 l8 center-align">
           <%= f.file_field :profile_picture,  id: "imgupload",  style:"display:none"%>
           <% if @user.profile_picture.present? %>
-            <%= image_tag @user.profile_picture_url, id: "ImageUpload", class: "circle pic_pulse" %>
+            <%= image_tag @user.profile_picture.thumb.url, id: "ImageUpload", class: "circle pic_pulse" %>
           <% else %>
             <%= image_tag 'profile/dp.png', id: "ImageUpload", class: "circle pic_pulse" %>
           <% end %>
@@ -23,7 +23,15 @@
         <div class="col s12 m4 l2 right-align"></div>
       </div>
       <div class="row center-align">
-          <%= f.text_field :name, id: "icon_prefix", placeholder: 'Nickname'%>
+        <div class="col s2"></div>
+        <div class="col s2"></div>
+        <div class="col s1"></div>
+        <div class="col s2">
+          <%= f.text_field :name, id: "icon_prefix", placeholder: 'Nickname', style: "text-align:center" %>
+        </div>
+        <div class="col s1"></div>
+        <div class="col s2"></div>
+        <div class="col s2"></div>
       </div>
     </div>
     <div class="row right-align">
