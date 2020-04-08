@@ -7,13 +7,26 @@
     $('.parallax').parallax();
 </script>
 <div class="section orange lighten-5">
-  <div class="row container center-align">
-    <%= image_tag 'profile/dp.png', class: "circle" %>
-    <% if @user.name.present? %>
-      <h2 class="header center"><%= @user.name %></h2>
-    <% else %>
-      <h2 class="header center"> PJ </h2>
-    <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4 l2"></div>
+      <div class="col s12 m4 l8 center-align">
+        <%= image_tag 'profile/dp.png', class: "circle" %>
+      </div>
+      <div class="col s12 m4 l2 right-align"></div>
+    </div>
+    <div class="row center-align">
+      <% if @user.name.present? %>
+              <h2 class="header"><%= @user.name %></h2>
+      <% else %>
+              <h2 class="header center"> PJ </h2>
+      <% end %>
+    </div>
+  </div>
+  <div class="row right-align">
+    <div class="col s12">
+      <a class="btn btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
+    </div>
   </div>
   <div class="row container">
     <div class="col s1"></div>
