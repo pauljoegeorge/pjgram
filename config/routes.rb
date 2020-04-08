@@ -35,6 +35,12 @@ Rails.application.routes.draw do
     get '/edit/:id'     => 'articles#edit',               as: 'edit_article'
     patch '/:id'        => 'articles#update',             as: 'update_article'
   end
+
+  scope :profile do
+    get '/'       => 'users#profile',         as: 'user_profile'
+    get '/edit'   => 'users#profile_edit',    as: 'user_profile_edit'
+    patch '/updated'  => 'users#profile_update',  as: 'user_profile_update'
+  end
 end
 
 
