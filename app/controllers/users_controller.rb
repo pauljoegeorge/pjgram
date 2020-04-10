@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   def profile
     @user = current_user
+    @vocabularies = current_user.vocabularies.page params[:page]
+    @articles = current_user.articles.page params[:page]
   end
 
   def profile_edit
