@@ -1,8 +1,4 @@
-<div class="parallax-container">
-  <div class="parallax">
-    <%= image_tag('profile/bg.jpg') %>
-  </div>
-</div>
+<%= render 'shared_parallax' %>
 <script>
     $('.parallax').parallax();
 </script>
@@ -46,11 +42,7 @@
     <div class="col s1"></div>
   </div>
 </div>
-<div class="parallax-container">
-  <div class="parallax">
-    <%= image_tag 'profile/bg.jpg' %>
-  </div>
-</div>
 
+<%= render 'shared_parallax' %>
 <%= render 'vocabularies' %>
 <%= render "articles" %>
