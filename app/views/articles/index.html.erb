@@ -32,6 +32,63 @@
   <% end %>
 </ul>
 
+
+<div class="container center-align">
+<div class="row">
+  <div class="col s4">
+    <% @articles.each  do  |article|%>
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag 'profile/bg_1.jpg' %>
+<!--          <span class="card-title"></span>-->
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p><%= article.head %>
+            <% if article.tag_names.present? %>
+<!--            <div class="card-action">-->
+              <br>
+              <% article.tag_names.each do |tag| %>
+                <a href="#" class="purple-text lighten-4">#<%= tag %></a>
+              <% end  %>
+<!--            </div>-->
+          <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col s4">
+    <% @articles.each  do  |article|%>
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag 'profile/bg_1.jpg' %>
+          <!--          <span class="card-title"><%#= article.head %></span>-->
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p><%= article.head %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col s4">
+    <% @articles.each  do  |article|%>
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag 'profile/bg_1.jpg' %>
+          <!--          <span class="card-title"><%#= article.head %></span>-->
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p><%= article.head %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</div>
 <ul class="pagination center">
   <%= paginate @articles %>
 </ul>
