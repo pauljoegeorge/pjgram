@@ -7,30 +7,62 @@
   <div class="col s12 m4 l2"></div>
 </div>
 <%= check_for_alert %>
-<ul class="collection">
-  <% @articles.each  do  |article|%>
-    <li class="collection-item avatar">
-      <i class="material-icons circle green">book</i>
-      <a href="/articles/<%=article.id %>"><span class="title blue-grey-text lighten-4" style="font-size: 25px"><%=  article.head %></span></a>
-        <% if article.tag_names.present? %>
-          <div class="card-action">
-            &ensp;&ensp;
-            <% article.tag_names.each do |tag| %>
-              <a href="#" class="purple-text lighten-4">#<%= tag %></a>
-            <% end  %>
-          </div>
-        <% end %>
-      <%= link_to delete_article_path(article.id), method: :delete,  class: "secondary-content col s9" do %>
-        <i class="material-icons">delete</i>
-      <% end %>
-      <p>
+<!--<ul class="collection">-->
+  <%# @articles.each  do  |article|%>
+<!--    <li class="collection-item avatar">-->
+<!--      <i class="material-icons circle green">book</i>-->
+<!--      <a href="/articles/<%#=article.id %>"><span class="title blue-grey-text lighten-4" style="font-size: 25px"><%#=  article.head %></span></a>-->
+        <%# if article.tag_names.present? %>
+<!--          <div class="card-action">-->
+<!--            &ensp;&ensp;-->
+            <%# article.tag_names.each do |tag| %>
+<!--              <a href="#" class="purple-text lighten-4">#<%#= tag %></a>-->
+            <%# end  %>
+<!--          </div>-->
+        <%# end %>
+      <%#= link_to delete_article_path(article.id), method: :delete,  class: "secondary-content col s9" do %>
+<!--        <i class="material-icons">delete</i>-->
+      <%# end %>
+<!--      <p>-->
         <%#= link_to "Show", article_path(article.id), method: :get, class: "purple-text text-darken-2"%>
-        &nbsp;  &nbsp;
-        <%= link_to "Edit", edit_article_path(article.id), method: :get, class: "blue-text text-darken-2" %>
-      </p>
-    </li>
-  <% end %>
-</ul>
+<!--        &nbsp;  &nbsp;-->
+        <%#= link_to "Edit", edit_article_path(article.id), method: :get, class: "blue-text text-darken-2" %>
+<!--      </p>-->
+<!--    </li>-->
+  <%# end %>
+<!--</ul>-->
+<% @articles.each_slice(2) do |article1, article2|%>
+  <div class="row">
+    <div class="col s2"></div>
+    <div class="col s4">
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag "profile/bg_1.jpg",  class: "activator"%>
+          <a  href="/articles/<%= article1.id %>" class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+            <i class="material-icons">remove_red_eye</i>
+          </a>
+        </div>
+        <%= render 'article_content', article: article1%>
+        <%= render 'article_actions', article: article1 %>
+      </div>
+    </div>
+    <div class="col s4">
+      <% if article2.present? %>
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag "profile/bg_1.jpg",  class: "activator"%>
+            <a  href="/articles/<%= article1.id %>" class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+              <i class="material-icons">remove_red_eye</i>
+            </a>
+          </div>
+          <%= render 'article_content', article: article2 %>
+          <%= render 'article_actions', article: article2 %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col s2"></div>
+  </div>
+<% end %>
 
 <ul class="pagination center">
   <%= paginate @articles %>
