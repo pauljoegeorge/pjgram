@@ -1,0 +1,12 @@
+<div class="card-action">
+  <div class="left">
+    <%= link_to edit_article_path(article.id), method: :get do %>
+      <i class="small material-icons">edit</i>
+    <% end %>
+  </div>
+  <div class="right-align">
+    <%= link_to delete_article_path(article.id), method: :delete do %>
+      <i class="small material-icons">delete</i>
+    <% end %>
+  </div>
+</div>
