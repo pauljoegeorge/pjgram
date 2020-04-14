@@ -13,7 +13,19 @@
     </div>
   </div>
 </div>
-
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+<div class="container">
+  <div class="row">
+    <h4 class="blue-grey-text darken-4"> Comments </h4>
+  </div>
+  <%= render 'comments', article_comments: @article_comments %>
+  <%= render 'new_comment', article_comment: @article_comment, article_id: @article.id, visitor_id: @visitor_id%>
+</div>
+<div class="row"></div>
+<div class="row"></div>
 <script>
     $('p').addClass("left-align");
 </script>

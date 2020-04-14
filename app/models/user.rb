@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :vocabularies, :dependent => :delete_all
   has_many :articles,     :dependent => :delete_all
+  has_many :article_comments
 
   mount_uploader :profile_picture, ImageUploader
 end
