@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_074511) do
+ActiveRecord::Schema.define(version: 2020_04_11_092846) do
+
+  create_table "article_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.string "response"
+    t.bigint "users_id"
+    t.bigint "articles_id"
+    t.index ["articles_id"], name: "index_article_comments_on_articles_id"
+    t.index ["users_id"], name: "index_article_comments_on_users_id"
+  end
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "head", null: false
