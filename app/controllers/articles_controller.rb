@@ -38,6 +38,10 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
+    @article_comments = ArticleComment.where(article_id: params[:id])
+    @visitor_id = current_user.id
+
   end
 
   def destroy

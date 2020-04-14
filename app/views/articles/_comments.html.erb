@@ -1,0 +1,11 @@
+<% article_comments.each do |article_comment| %>
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <%= image_tag "profile/bg_1.jpg", class: "circle" %>
+      <span class="title"><b><h6><%= article_comment.user.name %> </h6></b></span>
+      <p><%= article_comment.response %> <br>
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+<% end %>

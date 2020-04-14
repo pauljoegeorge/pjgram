@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     patch '/:id'        => 'articles#update',             as: 'update_article'
   end
 
+  scope :article_comments do
+    post '/'  => 'article_comments#create',  as: 'article_comment_create'
+  end
+
   scope :profile do
     get '/'       => 'users#profile',         as: 'user_profile'
     get '/edit'   => 'users#profile_edit',    as: 'user_profile_edit'
