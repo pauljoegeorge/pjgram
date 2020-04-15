@@ -38,7 +38,7 @@
     $('.chips').chips();
     var elem = $('.chips');
     var instance = M.Chips.getInstance(elem);
-    <% for i in 1...@article.tag_names.size %>
+    <% for i in 0...@article.tag_names.size %>
       instance.addChip({
           tag: '<%= @article.tag_names[i] %>',
       });
