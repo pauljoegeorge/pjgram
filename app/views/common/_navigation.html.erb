@@ -7,7 +7,16 @@
     </a>
     <ul class="right hide-on-med-and-down">
       <% if user_signed_in? %>
-          <li><a href="/profile"><i class="material-icons">person</i></a></li>
+        <li>
+          <%= link_to user_profile_path do %>
+            <i class="material-icons">person</i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to signout_path do %>
+            <i class="material-icons">directions_walk</i>
+          <% end %>
+        </li>
         <% else %>
           <li><a href="sass.html"><i class="material-icons">search</i></a></li>
           <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
