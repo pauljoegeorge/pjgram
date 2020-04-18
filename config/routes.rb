@@ -45,6 +45,10 @@ Rails.application.routes.draw do
     get '/edit'   => 'users#profile_edit',    as: 'user_profile_edit'
     patch '/updated'  => 'users#profile_update',  as: 'user_profile_update'
   end
+
+  scope :tags do
+    get '/:tag_name' => 'tags#list', as: 'articles_by_tag'
+  end
 end
 
 

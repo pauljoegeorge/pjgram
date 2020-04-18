@@ -1,5 +1,7 @@
 <p>
   <% article.tag_names.each do |tag| %>
-    <a href="#">#<%= tag %></a>
+    <%= link_to articles_by_tag_path(tag) do %>
+     #<%= tag %>
+    <% end %>
   <% end  %>
 </p>
