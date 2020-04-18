@@ -12,12 +12,12 @@
 - Tada !!
  
 ## Available features:
-- User account ( Register/Login/Logout)
+- User account ( Register/Login/Logout/Profile)
 - Vocabulary Management
+- Article Management ( supports Markdown, tagging)
 
 ## [WIP]
-- Article management
 - Add friends
-- User profile
+- Add option to save japanese voabulary
 - test code
 - And more ....
