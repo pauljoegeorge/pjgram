@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_131202) do
+ActiveRecord::Schema.define(version: 2020_04_19_112720) do
 
   create_table "article_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "response"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2020_04_14_131202) do
     t.bigint "user_id"
     t.index ["head"], name: "index_articles_on_head", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "following_user_id", null: false
+    t.bigint "follower_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_user_id", "following_user_id"], name: "index_follows_on_follower_user_id_and_following_user_id", unique: true
+    t.index ["follower_user_id"], name: "index_follows_on_follower_user_id"
+    t.index ["following_user_id"], name: "index_follows_on_following_user_id"
   end
 
   create_table "gutentag_taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
@@ -79,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_131202) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "profile_picture"
+    t.text "followers"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -96,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_131202) do
   add_foreign_key "article_comments", "articles"
   add_foreign_key "article_comments", "users"
   add_foreign_key "articles", "users"
+  add_foreign_key "follows", "users", column: "follower_user_id"
+  add_foreign_key "follows", "users", column: "following_user_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "vocabularies", "users"
 end
