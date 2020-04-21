@@ -31,12 +31,13 @@ ActiveRecord::Schema.define(version: 2020_04_19_112720) do
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
-    t.bigint "follower_id", null: false
-    t.bigint "followed_id", null: false
+    t.bigint "following_user_id", null: false
+    t.bigint "follower_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followed_id"], name: "index_follows_on_followed_id"
-    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["follower_user_id", "following_user_id"], name: "index_follows_on_follower_user_id_and_following_user_id", unique: true
+    t.index ["follower_user_id"], name: "index_follows_on_follower_user_id"
+    t.index ["following_user_id"], name: "index_follows_on_following_user_id"
   end
 
   create_table "gutentag_taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
@@ -106,8 +107,8 @@ ActiveRecord::Schema.define(version: 2020_04_19_112720) do
   add_foreign_key "article_comments", "articles"
   add_foreign_key "article_comments", "users"
   add_foreign_key "articles", "users"
-  add_foreign_key "follows", "users", column: "followed_id"
-  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "follower_user_id"
+  add_foreign_key "follows", "users", column: "following_user_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "vocabularies", "users"
 end
