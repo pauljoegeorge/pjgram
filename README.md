@@ -17,7 +17,8 @@
 - Article Management ( supports Markdown, tagging)
 
 ## [WIP]
-- Add friends
+- Follow friends
 - Add option to save japanese voabulary
+- Sticky notes for daily meetings
 - test code
 - And more ....
