@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
+  before_action :article_accessible?, only: [:edit, :update, :show, :destroy]
 
   def index
-    @articles = Article.order('id DESC').page params[:page]
+    @articles = current_user.articles.order('id DESC').page params[:page]
   end
 
   def new
