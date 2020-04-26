@@ -11,10 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    param = permitted_params(params)
-    @article = Article.new param
-    @article.tag_names = tags_as_array(params[:article][:tag_names])
-    @article.user_id = current_user.id
+    @article = Article.new permitted_params(params)
     if @article.valid?
       @article.save
       redirect_to article_path(@article)
@@ -29,10 +26,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    @article.head = params[:article][:head]
-    @article.description = params[:article][:description]
-    @article.tag_names = tags_as_array(params[:article][:tag_names])
-    @article.save
+    @article.update permitted_params(params)
     flash[:success] = "Updated successfully !!"
     redirect_to article_path(@article.id)
   end
@@ -55,7 +49,11 @@ class ArticlesController < ApplicationController
   private
 
   def permitted_params(params)
-    params.require(:article).permit(:head, :description)
+    params.require(:article).permit(:head, :description).merge(
+        user_id: current_user.id,
+        tag_names: tags_as_array(params[:article][:tag_names]
+        )
+    )
   end
 
   def tags_as_array(tag_names)
@@ -64,6 +62,6 @@ class ArticlesController < ApplicationController
     formatted_tags_array.each do |tag|
       tag.slice!("tag:")
     end
-    return formatted_tags_array
+    formatted_tags_array
   end
 end
