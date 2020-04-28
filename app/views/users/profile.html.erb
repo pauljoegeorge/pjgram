@@ -6,13 +6,17 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m4 l2"></div>
-      <div class="col s12 m4 l9 center-align">
+      <div class="col s12 m4 l8 center-align">
         <% if @user.profile_picture.present? %>
           <%= image_tag @user.profile_picture.thumb.url, id: "ImageUpload", class: "circle" %>
         <% else %>
           <%= image_tag 'profile/dp.png', id: "ImageUpload", class: "circle" %>
         <% end %>
-        <a href="#" class="btn btn-floating btn-large cyan pulse"><i class="material-icons">person_add</i></a>
+          <input id="my_id" type="hidden" value='<%="#{@current_user.id}"%>'>
+          <input id="his_id" type="hidden" value='<%="#{@user.id}"%>'>
+          <%= button_tag class: 'material-icons btn btn-floating btn-large cyan pulse follow', href: "#", onclick:'follow(this)' do %>
+            <%= content_tag :i, "person_add", class: "material-icons" %>
+          <% end %>
       </div>
       <div class="col s12 m4 l1"></div>
     </div>
@@ -47,3 +51,29 @@
 <%= render 'shared_parallax' %>
 <%= render 'vocabularies' %>
 <%= render "articles" %>
+
+<script>
+  function follow(event){
+    var follower_id = $('#my_id').val();
+    var following_id = $('#his_id').val();
+    $.ajax({
+        type: "POST",
+        url: "/follow",
+        dataType:"json",
+        data: {
+            follow: {
+                following_user_id: following_id,
+                follower_user_id: follower_id
+            }
+        },
+        success(data){
+            window.alert("success");
+          return false;
+        },
+        error(data){
+            window.alert("error");
+            return false;
+        }
+    })
+  }
+</script>
