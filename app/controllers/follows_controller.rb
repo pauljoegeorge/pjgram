@@ -6,6 +6,11 @@ class FollowsController < ApplicationController
     render json: {data: 'success'}, status: 200
   end
 
+  def delete
+    follow = Follow.where(following_user_id: params[:follow][:following_user_id], follower_user_id: params[:follow][:follower_user_id]).first
+    follow.delete
+  end
+
   private
 
   def follow_params(params)

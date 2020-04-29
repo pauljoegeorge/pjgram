@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m4 l2"></div>
-      <div class="col s12 m4 l8 center-align">
+      <div class="col s12 m4 l9 center-align">
         <% if @user.profile_picture.present? %>
           <%= image_tag @user.profile_picture.thumb.url, id: "ImageUpload", class: "circle" %>
         <% else %>
@@ -14,9 +14,7 @@
         <% end %>
           <input id="my_id" type="hidden" value='<%="#{@current_user.id}"%>'>
           <input id="his_id" type="hidden" value='<%="#{@user.id}"%>'>
-          <%= button_tag class: 'material-icons btn btn-floating btn-large cyan pulse follow', href: "#", onclick:'follow(this)' do %>
-            <%= content_tag :i, "person_add", class: "material-icons" %>
-          <% end %>
+          <%= follow_user(@current_user.id, @user.id) %>
       </div>
       <div class="col s12 m4 l1"></div>
     </div>
@@ -39,10 +37,8 @@
     <div class="col s1"></div>
     <div class="col s1"></div>
     <div class="col s3">
-<!--      <a href="/dictionary" class="waves-effect waves-light btn-large #3f51b5 indigo"><i class="material-icons left">sort_by_alpha</i>Dictionary</a>-->
     </div>
     <div class="col s3">
-<!--      <a href="/articles" class="waves-effect waves-light btn-large #3f51b5 indigo"><i class="material-icons left">library_books</i>Articles</a>-->
     </div>
     <div class="col s1"></div>
   </div>
@@ -53,7 +49,7 @@
 <%= render "articles" %>
 
 <script>
-  function follow(event){
+  function follow(){
     var follower_id = $('#my_id').val();
     var following_id = $('#his_id').val();
     $.ajax({
@@ -67,13 +63,42 @@
             }
         },
         success(data){
-            window.alert("success");
-          return false;
+            // window.alert("success");
+            $('#follow-button').html('<i class="material-icons">check_box</i>');
+            $("#follow-button").attr("onclick","unfollow()");
+
+          return true;
         },
         error(data){
             window.alert("error");
             return false;
         }
     })
+  }
+  function unfollow(){
+      var follower_id = $('#my_id').val();
+      var following_id = $('#his_id').val();
+      $.ajax({
+          type: "POST",
+          url: "/unfollow",
+          dataType:"json",
+          data: {
+              follow: {
+                  following_user_id: following_id,
+                  follower_user_id: follower_id
+              }
+          },
+          success(data){
+              // window.alert("success");
+              $('#follow-button').html('<i class="material-icons">person_add</i>');
+              $("#follow-button").attr("onclick","follow()");
+
+              return true;
+          },
+          error(data){
+              window.alert("error");
+              return false;
+          }
+      })
   }
 </script>
