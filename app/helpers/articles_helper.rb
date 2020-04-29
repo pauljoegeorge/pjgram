@@ -14,4 +14,9 @@ module ArticlesHelper
       render 'article_tags', article: article
     end
   end
+
+  def following?(my_id, other_user_id)
+    following = Follow.where(following_user_id: other_user_id, follower_user_id: my_id).first
+    following.present?
+  end
 end
