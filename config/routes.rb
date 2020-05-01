@@ -58,6 +58,10 @@ Rails.application.routes.draw do
   scope :tags do
     get '/:tag_name' => 'tags#list', as: 'articles_by_tag'
   end
+
+  scope :daily do
+    get '/' => 'daily_notes#show', as: 'daily_notes'
+  end
 end
 
 
