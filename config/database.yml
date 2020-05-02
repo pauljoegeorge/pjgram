@@ -15,17 +15,21 @@ default: &default
   pool: <%= ENV["DB_POOL"] || 5  %>
   database: <%= ENV['DB_NAME'] || 'pjgram' %>
   username: <%= ENV['DB_USER'] || 'root' %>
-  password: <%= ENV['DB_PASS'] || 'password' %>
+#  password: <%= ENV['DB_PASS'] || 'password' %>
   host: <%= ENV["DB_HOST"] %>
   url: <%= ENV['DATABASE_URL'] %> # takes higher precedence than other settings
   reconnect: true
 
 development:
   <<: *default
+  password: <%= ENV['DB_PASS'] || 'password' %>
   database: <%= ENV['DB_NAME'] || 'pjgram' %>
 
 test:
   <<: *default
+  encoding: utf8
+  port: 3306
+  host: '127.0.0.1'
   database: pjgram_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
