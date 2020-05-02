@@ -75,9 +75,10 @@ jobs:
             - ~/.cache/yarn
 
       - run:
-          name: bundle exec
+          name: connect to mysql
           command: |
             dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
-#            bundle exec rake db:create
 #            bundle exec rake db:schema:load --trace
-
+      - run:
+          name: db create
+          command: bundle exec rake db:create
