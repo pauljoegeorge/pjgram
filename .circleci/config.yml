@@ -13,9 +13,9 @@ jobs:
 #          DB_HOST: 127.0.0.1
 #          DB_USERNAME: 'root'
 #          DB_PASSWORD: 'password'
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
+#          BUNDLE_JOBS: 3
+#          BUNDLE_RETRY: 3
+#          BUNDLE_PATH: vendor/bundle
       - image: circleci/mysql:5.7.22
         environment:
 #          MYSQL_DATABASE: 'pjgram_test'
@@ -24,11 +24,14 @@ jobs:
 #          MYSQL_PORT: 3306
 #          MYSQL_ROOT_HOST: "%"
 #          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_DATABASE: pjgram_test
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_ROOT_HOST: "%"
-          MYSQL_USER: root
+          # new
+#          MYSQL_ALLOW_EMPTY_PASSWORD: true
+#          MYSQL_DATABASE: pjgram_test
+#          MYSQL_HOST: 127.0.0.1
+#          MYSQL_ROOT_HOST: "%"
+#          MYSQL_USER: root
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
 
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
@@ -86,4 +89,7 @@ jobs:
 #            bundle exec rake db:schema:load --trace
       - run:
           name: db create
-          command: bundle exec rake db:create
+          command: |
+            mv config/database.yml.ci config/database.yml
+            bundle exec rake db:create
+
