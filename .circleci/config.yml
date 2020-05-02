@@ -6,7 +6,7 @@ jobs:
   build:
     working_directory: ~/circleci-pjgram
     docker:
-      - image: circleci/ruby:2.6.3-stretch
+      - image: circleci/ruby:2.6.3-stretch-node
         environment: # environment variables for primary container
           BUNDLER_VERSION: 2.0.2
           BUNDLE_JOBS: 3
