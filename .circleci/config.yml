@@ -76,9 +76,9 @@ jobs:
           name: connect to mysql
           command: |
             dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
-#            bundle exec rake db:schema:load --trace
       - run:
           name: db create
           command: |
-            bundle exec rails db:create
+            RACK_ENV=test bundle exec rake db:create
+            RACK_ENV=test bundle exec rake db:migrate
 

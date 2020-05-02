@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
   def profile
-    @user = get_user(params)
+    if params[:id].present?
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
     @current_user = current_user
     @vocabularies = @user.vocabularies.page params[:page]
     @articles = @user.articles.page params[:page]
@@ -22,9 +27,5 @@ class UsersController < ApplicationController
 
   def permitted_params(params)
     params.require(:user).permit(:name, :profile_picture)
-  end
-
-  def get_user(params)
-    params[:id].present? ? User.find(params[:id]) : current_user
   end
 end

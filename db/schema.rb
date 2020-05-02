@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_112720) do
+ActiveRecord::Schema.define(version: 2020_05_02_105231) do
 
   create_table "article_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "response"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_112720) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.json "profile_picture"
+    t.string "profile_picture"
     t.text "followers"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
