@@ -41,10 +41,10 @@ jobs:
 
       # Restore bundle cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-#      - restore_cache:
-#          keys:
-#            - pjgram-bundle-v2-{{ checksum "Gemfile.lock" }}
-#            - pjgram-bundle-v2-
+      - restore_cache:
+          keys:
+            - pjgram-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - pjgram-bundle-v2-
 
       - run: # Install Ruby dependencies
           name: Bundle Install
@@ -80,6 +80,5 @@ jobs:
       - run:
           name: db create
           command: |
-            mv config/database.yml.ci config/database.yml
             bundle exec rails db:create
 
