@@ -22,7 +22,7 @@ jobs:
           MYSQL_USER: 'root'
           MYSQL_PASSWORD: 'password'
           MYSQL_PORT: 3306
-          MYSQL_HOST: 127.0.0.1
+          MYSQL_ROOT_HOST: %
 #          MYSQL_ROOT_HOST: "%"
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
