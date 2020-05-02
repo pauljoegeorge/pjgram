@@ -53,6 +53,9 @@ jobs:
           key: pjgram-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - run:
+          name: Installing yarn
+          command: npm install -g yarnpkg@0.15.1
 
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
