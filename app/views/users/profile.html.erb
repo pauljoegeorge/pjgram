@@ -28,7 +28,9 @@
   </div>
   <div class="row right-align">
     <div class="col s12">
-      <a href="/profile/edit" class="btn btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
+      <%= link_to user_profile_edit_path(@current_user.id), class: "btn btn-floating btn-large cyan pulse" do %>
+        <i class="material-icons">edit</i>
+      <% end %>
     </div>
   </div>
   <div class="row container">

@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   scope :profile do
     get '/'       => 'users#profile',         as: 'user_profile'
     get '/:id'    => 'users#profile',         as: 'user_profile_by_id'
-    get '/edit'   => 'users#profile_edit',    as: 'user_profile_edit'
+    get '/:id/edit'   => 'users#profile_edit',    as: 'user_profile_edit'
     patch '/updated'  => 'users#profile_update',  as: 'user_profile_update'
   end
 
