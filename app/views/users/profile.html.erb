@@ -47,7 +47,9 @@
 </div>
 
 <%= render 'shared_parallax' %>
-<%= render 'vocabularies' %>
+<% if view_allowed?(@current_user.id, @user.id) %>
+  <%= render 'vocabularies' %>
+<% end %>
 <%= render "articles" %>
 
 <script>
