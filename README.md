@@ -15,6 +15,7 @@
 - User account ( Register/Login/Logout/Profile)
 - Vocabulary Management
 - Article Management ( supports Markdown, tagging)
+- Daily notes - work like sticky notes - will help during meetings
 
 ## [WIP]
 - Follow friends
