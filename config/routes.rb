@@ -60,7 +60,9 @@ Rails.application.routes.draw do
   end
 
   scope :daily do
-    get '/' => 'daily_notes#show', as: 'daily_notes'
+    get '/'         => 'daily_notes#show',          as: 'daily_notes'
+    post '/'        => 'daily_notes#create',        as: 'daily_create'
+    delete '/:id'   => 'daily_notes#destroy',       as: 'delete_note'
   end
 end
 

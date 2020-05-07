@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_112602) do
+ActiveRecord::Schema.define(version: 2020_05_07_104516) do
 
   create_table "article_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "response"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2020_05_02_112602) do
     t.bigint "user_id"
     t.index ["head"], name: "index_articles_on_head", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "dailies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "note", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_dailies_on_user_id"
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -87,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_05_02_112602) do
   add_foreign_key "article_comments", "articles"
   add_foreign_key "article_comments", "users"
   add_foreign_key "articles", "users"
+  add_foreign_key "dailies", "users"
   add_foreign_key "follows", "users", column: "follower_user_id"
   add_foreign_key "follows", "users", column: "following_user_id"
   add_foreign_key "vocabularies", "users"

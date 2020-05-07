@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :article_comments
   has_many :followings, foreign_key: :following_user_id, class_name: "Follow"
   has_many :followers, foreign_key: :follower_user_id, class_name: "Follow"
-
+  has_many :dailies, class_name: "Daily"
   mount_uploader :profile_picture, ImageUploader
 end
