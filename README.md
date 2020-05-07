@@ -21,4 +21,5 @@
 ## [WIP]
 - Add option to save japanese voabulary
 - test code
+- Twitter/FB login
 - And more ....
