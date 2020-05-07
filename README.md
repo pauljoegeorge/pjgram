@@ -16,10 +16,9 @@
 - Vocabulary Management
 - Article Management ( supports Markdown, tagging)
 - Daily notes - work like sticky notes - will help during meetings
+- Follow friends
 
 ## [WIP]
-- Follow friends
 - Add option to save japanese voabulary
-- Sticky notes for daily meetings
 - test code
 - And more ....
