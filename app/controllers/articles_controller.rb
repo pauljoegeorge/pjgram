@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :article_viewable?, only: [:show]
-  before_action :article_full_access?, only: [:edit, :update, :destroy]
+  before_action :article_viewable?, only: [:edit, :update, :destroy]
+  before_action :article_full_access?, only: [:show]
 
   def index
     @articles = current_user.articles.order('id DESC').page params[:page]

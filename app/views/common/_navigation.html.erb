@@ -8,6 +8,11 @@
     <ul class="right hide-on-med-and-down">
       <% if user_signed_in? %>
         <li>
+          <%= link_to daily_notes_path do %>
+            <i class="material-icons left">event_note</i>
+          <% end %>
+        </li>
+        <li>
           <%= link_to user_profile_path do %>
             <i class="material-icons">person</i>
           <% end %>

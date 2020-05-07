@@ -7,26 +7,30 @@
     border-color: Transparent;
   }
 </style>
-<div class="container center-align">
-  <div class="row">
-    <div class="col s4"></div>
-    <div class="col s4">
-      <div class="card">
-        <div class="card-image">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">check</i></a>
-        </div>
-        <div class="card teal">
-          <div class="card-content white-text">
-            <textarea class="daily-card">I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</textarea>
-            <br>
+
+<div class="row"></div>
+<%= form_for( @note, :url => daily_create_path) do |f| %>
+  <div class="container center-align">
+    <div class="row">
+      <div class="col s4"></div>
+      <div class="col s4">
+        <div class="card">
+          <div class="card-image">
+            <%= button_tag class: 'btn-floating halfway-fab waves-effect waves-light red' do %> <%= content_tag :i, "check", class: "material-icons" %><% end %>
+          </div>
+          <div class="card teal">
+            <div class="card-content white-text">
+              <%= f.hidden_field :user_id, value: @user.id %>
+              <%= f.text_area :note, class: "daily-card", placeholder: "Note here..." %>
+              <br>
+            </div>
           </div>
         </div>
       </div>
+      <div class="col s4"></div>
     </div>
-    <div class="col s4"></div>
   </div>
-</div>
+<% end %>
 <div class="row center-align">
   <div class="col s12">
     <div class="card-panel teal">
@@ -35,44 +39,20 @@
   </div>
 </div>
 <div class="row">
-  <div class="col s3">
-    <div class="card">
-      <div class="card-panel teal card-image">
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-        </span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
-      </div>
-    </div>
-  </div>
-  <div class="col s3">
-    <div class="card">
-      <div class="card-panel teal card-image">
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-        </span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
-      </div>
-    </div>
-  </div>
-  <div class="col s3">
-    <div class="card">
-      <div class="card-panel teal card-image">
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-        </span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
-      </div>
-    </div>
-  </div>
-  <div class="col s3">
-    <div class="card">
-      <div class="card-panel teal card-image">
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-        </span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
-      </div>
-    </div>
-  </div>
+  <% @dailies.each_slice(4) do |daily1, daily2, daily3, daily4|%>
+  <% [daily1, daily2, daily3, daily4].each do |daily| %>
+    <% if daily.present? %>
+        <div class="col s3">
+          <div class="card">
+            <div class="card-panel teal card-image">
+              <span class="white-text"><%= daily.note %></span>
+              <%= link_to delete_note_path(daily.id), method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red" do %>
+                <i class="material-icons">delete</i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
