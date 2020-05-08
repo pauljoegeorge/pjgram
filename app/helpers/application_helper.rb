@@ -1,7 +1,7 @@
 module ApplicationHelper
   def article_viewable?
     article = Article.find(params[:id])
-    if !following?(current_user.id, article.user.id)
+    if !following?(current_user.id, article.user.id) && current_user.id != article.user.id
       redirect_to(articles_path)
     end
   end
