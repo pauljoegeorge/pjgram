@@ -45,7 +45,8 @@
         <div class="col s3">
           <div class="card">
             <div class="card-panel teal card-image">
-              <span class="white-text"><%= daily.note %></span>
+              <input type="hidden" value="<%= daily.id %>" id='daily_id'>
+              <textarea id="note" class="white-text daily-card" onchange="updateNote"><%= daily.note %></textarea>
               <%= link_to delete_note_path(daily.id), method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red" do %>
                 <i class="material-icons">delete</i>
               <% end %>
@@ -56,3 +57,41 @@
     <% end %>
   <% end %>
 </div>
+
+<script>
+    var timeoutId;
+    $('#note').bind('input change', function() {
+        timeoutId = setTimeout(function() {
+            // Runs 1 second (1000 ms) after the last change
+            saveToDB();
+        }, 3000);
+    });
+
+    function saveToDB()
+    {
+        var myNote = this;
+        var daily_id = $('#daily_id').attr("value");
+        var note = $('#note').val();
+        $.ajax({
+            type: "PATCH",
+            url: "/daily",
+            dataType:"json",
+            data: {
+                daily: {
+                    user_id: daily_id,
+                    note: note
+                }
+            },
+            success(data){
+                // $('<div>', { text: myNote.value }).appendTo('body');
+                // window.alert("success");
+
+                return true;
+            },
+            error(data){
+                // window.alert("error");
+                return false;
+            }
+        })
+    }
+</script>
