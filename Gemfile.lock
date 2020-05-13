@@ -90,6 +90,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.3)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.12.2)
@@ -97,6 +98,7 @@ GEM
       activesupport (>= 4.2.0)
     gutentag (2.5.2)
       activerecord (>= 3.2.0)
+    heavens_door (0.3.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     image_processing (1.10.3)
@@ -195,6 +197,23 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspec-core (3.9.2)
+      rspec-support (~> 3.9.3)
+    rspec-expectations (3.9.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-rails (4.0.0)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+    rspec-support (3.9.3)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -263,6 +282,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   devise
   gutentag (~> 2.5)
+  heavens_door
   jbuilder (~> 2.7)
   jquery-rails
   kaminari
@@ -273,6 +293,7 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.1)
   ransack
   redcarpet
+  rspec-rails (~> 4.0.0)
   sass-rails (>= 6)
   selenium-webdriver
   spring
