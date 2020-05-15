@@ -51,6 +51,10 @@ Rails.application.routes.draw do
     post '/'       => 'follows#create',         as: 'follow_user'
   end
 
+  scope :friends do
+    get '/articles'  => "friends#articles",  as: 'friends_articles'
+  end
+
   scope :unfollow do
     post '/'       => 'follows#delete',         as: 'unfollow_user'
   end
