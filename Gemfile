@@ -63,7 +63,7 @@ gem 'kaminari'
 gem 'ransack'
 gem 'jquery-rails'
 # uploading files and images
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 # for Markdown
 gem "redcarpet"
 # for tags
